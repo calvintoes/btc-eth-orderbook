@@ -51,6 +51,11 @@ export default function Home() {
   const [windowFocus, setWindowFocu] = useState<boolean>(true);
 
   useEffect(() => {
+    dispatch(actions.connectWebsocket());
+    dispatch(actions.subscribeWebsocketFeed(cryptoType));
+  }, []);
+
+  useEffect(() => {
     window.addEventListener("focus", () => {
       dispatch(actions.connectWebsocket());
       dispatch(actions.subscribeWebsocketFeed(cryptoType));
@@ -74,11 +79,6 @@ export default function Home() {
       });
     };
   }, []);
-
-  // useEffect(() => {
-  //   dispatch(actions.connectWebsocket());
-  //   dispatch(actions.subscribeWebsocketFeed(cryptoType));
-  // }, []);
 
   const toggleFeed = () => {
     console.log("clickd");
