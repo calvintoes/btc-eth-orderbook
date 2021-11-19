@@ -3,11 +3,7 @@ import { Contract, OrderBookActions } from "../enums";
 import { SubscribeMessage, UnsubscribeMessage, WS_URL } from "../constants";
 import { convertToObj, getUpdatedLevels } from "../helpers";
 import { RootAction } from "../store/store";
-import {
-  updateCurrentAsks,
-  updateCurrentBids,
-  updateCurrentToken,
-} from "../store/OrderBookSlice";
+import { updateCurrentAsks, updateCurrentBids } from "../store/OrderBookSlice";
 import * as a from "../store/actions";
 
 const INTERVAL = 200;
