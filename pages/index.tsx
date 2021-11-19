@@ -48,7 +48,7 @@ const BlurBlock = styled.div`
 export default function Home() {
   const dispatch = useDispatch();
   const [cryptoType, setCryptoType] = useState<Enums.Contract>(Contract.XBT);
-  const [windowFocus, setWindowFocu] = useState<boolean>(true);
+  const [windowFocus, setWindowFocus] = useState<boolean>(true);
 
   useEffect(() => {
     dispatch(actions.connectWebsocket());
@@ -60,13 +60,12 @@ export default function Home() {
       dispatch(actions.connectWebsocket());
       dispatch(actions.subscribeWebsocketFeed(cryptoType));
       dispatch(actions.updateWindowFocus(true));
-      setWindowFocu(true);
+      setWindowFocus(true);
     });
     window.addEventListener("blur", () => {
       dispatch(actions.disconnectWebsocket());
       dispatch(actions.updateWindowFocus(false));
-      setWindowFocu(false);
-      console.log("disconnected");
+      setWindowFocus(false);
     });
 
     return () => {
@@ -78,11 +77,9 @@ export default function Home() {
         dispatch(actions.disconnectWebsocket());
       });
     };
-  }, []);
+  });
 
   const toggleFeed = () => {
-    console.log("clickd");
-
     if (cryptoType === Contract.XBT) {
       dispatch(actions.subscribeWebsocketFeed(Contract.ETH));
       dispatch(updateCurrentToken(Contract.ETH));
