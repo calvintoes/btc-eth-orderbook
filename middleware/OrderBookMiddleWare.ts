@@ -95,6 +95,7 @@ const OrderBookMiddleWare: Middleware<Dispatch> =
             dispatch(updateCurrentBids([]));
           } catch (error) {
             console.log(error);
+            dispatch(a.disconnectWebsocket);
           }
         };
         if (socket !== null) {
