@@ -54,6 +54,7 @@ const OrderBookMiddleWare: Middleware<Dispatch> =
             }
           } catch (error) {
             console.log(error);
+            dispatch(a.disconnectWebsocket());
           }
         };
         break;
